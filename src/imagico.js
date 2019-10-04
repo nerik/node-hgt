@@ -16,9 +16,7 @@ function ImagicoElevationDownloader(cacheDir, options) {
 ImagicoElevationDownloader.prototype.download = function(tileKey, latLng, cb) {
     var cleanup = function() {
             delete this._downloads[tileKey];
-            if (fs.existsSync(tempPath)) {
-                fs.unlinkSync(tempPath);
-            }
+            fs.unlinkSync(tempPath);
         }.bind(this),
         download = this._downloads[tileKey],
         tempPath,
